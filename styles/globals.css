@@ -1,0 +1,63 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Enable backdrop filter support */
+@supports (backdrop-filter: blur(1px)) {
+  .backdrop-blur-sm {
+    backdrop-filter: blur(4px);
+  }
+}
+
+/* Fallback for browsers that don't support backdrop-filter */
+@supports not (backdrop-filter: blur(1px)) {
+  .backdrop-blur-sm {
+    background-color: rgba(255, 255, 255, 0.7) !important;
+  }
+  .bg-white\/10, .bg-white\/20 {
+    background-color: rgba(255, 255, 255, 0.7) !important;
+  }
+}
+
+/* Custom shadow effects */
+.shadow-glow {
+  box-shadow: 0 0 15px rgba(59, 130, 246, 0.5);
+}
+
+:root {
+  --primary: #4299e1;
+  --primary-dark: #3182ce;
+  --primary-light: #63b3ed;
+}
+
+@layer base {
+  html {
+    @apply scroll-smooth;
+  }
+  
+  body {
+    @apply font-sans text-gray-800;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-montserrat font-bold;
+  }
+}
+
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary;
+  }
+
+  .btn-primary {
+    @apply bg-primary text-white hover:bg-primary-dark;
+  }
+
+  .btn-outline {
+    @apply border-primary text-primary hover:bg-primary hover:text-white;
+  }
+
+  .section-title {
+    @apply text-3xl md:text-4xl font-bold mb-6 text-gray-900;
+  }
+}
