@@ -26,15 +26,55 @@ export default function Contact() {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // In a real implementation, this would send the form data to a backend API
-    // For now, we'll just simulate a successful submission
+    
+    // Set loading state
     setFormStatus({
-      submitted: true,
+      submitted: false,
       error: false,
-      message: 'Thank you for your message! We will get back to you soon.',
+      message: 'Sending your message...',
     });
+    
+    try {
+      // Send form data to our API endpoint
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+      
+      const data = await response.json();
+      
+      if (response.ok) {
+        // Success
+        setFormStatus({
+          submitted: true,
+          error: false,
+          message: 'Thank you for your message! We will get back to you soon.',
+        });
+        // Reset form data
+        setFormData({
+          name: '',
+          email: '',
+          phone: '',
+          company: '',
+          message: '',
+        });
+      } else {
+        // API returned an error
+        throw new Error(data.message || 'Something went wrong');
+      }
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      setFormStatus({
+        submitted: false,
+        error: true,
+        message: error.message || 'Failed to send message. Please try again later.',
+      });
+    }
   };
 
   return (
@@ -137,6 +177,20 @@ export default function Contact() {
                     </div>
                   </div>
                 </div>
+              ) : formStatus.error ? (
+                <div className="bg-red-50 border border-red-200 rounded-md p-6 mb-6">
+                  <div className="flex">
+                    <div className="flex-shrink-0">
+                      <svg className="h-5 w-5 text-red-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                        <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clipRule="evenodd" />
+                      </svg>
+                    </div>
+                    <div className="ml-3">
+                      <h3 className="text-lg font-medium text-red-800">Error</h3>
+                      <p className="mt-2 text-sm text-red-700">{formStatus.message}</p>
+                    </div>
+                  </div>
+                </div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-5">
                   <div>
@@ -211,10 +265,19 @@ export default function Contact() {
                     <button
                       type="submit"
                       className="relative w-full inline-flex group"
+                      disabled={formStatus.message === 'Sending your message...'}
                     >
                       <div className="absolute -inset-0.5 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-md blur opacity-70 group-hover:opacity-100 transition duration-500"></div>
                       <span className="relative w-full flex justify-center py-3 px-4 rounded-md text-sm font-medium text-white bg-primary hover:bg-primary-dark focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary">
-                        Send Message
+                        {formStatus.message === 'Sending your message...' ? (
+                          <>
+                            <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                              <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                              <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                            </svg>
+                            Sending...
+                          </>
+                        ) : 'Send Message'}
                       </span>
                     </button>
                   </div>
