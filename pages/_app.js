@@ -1,8 +1,6 @@
 import '../styles/globals.css'
 import '../styles/hero-animation.css'
 import Head from 'next/head'
-
-require('dotenv').config();
 function MyApp({ Component, pageProps }) {
   return (
     <>

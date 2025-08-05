@@ -11,6 +11,7 @@ export default function Services() {
         title="Our Services" 
         subtitle="We deliver customer-focused support, practical solutions, and proactive service to help small and medium businesses simplify their IT."
         accentText="How We Help"
+        backgroundImage="/images/professionals/saas-concept-collage.jpg"
       />
 
       {/* IT Solutions & Consulting */}

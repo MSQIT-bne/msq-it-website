@@ -107,8 +107,14 @@ export default function Contact() {
                   },
                   {
                     icon: "phone",
-                    title: "Phone",
+                    title: "Mobile",
                     content: "+61450 013 064",
+                    gradient: "from-indigo-500 to-purple-500"
+                  },
+                  {
+                    icon: "phone",
+                    title: "Phone",
+                    content: "(07)2142 6872",
                     gradient: "from-indigo-500 to-purple-500"
                   },
                   {
@@ -289,7 +295,7 @@ export default function Contact() {
       </ContentSection>
 
       {/* Map Section */}
-      <ContentSection 
+      {/* <ContentSection     
         title="Visit Us" 
         titleGradient={true}
         accentText="Our Location"
@@ -312,7 +318,7 @@ export default function Contact() {
             </div>
           </div>
         </div>
-      </ContentSection>
+      </ContentSection> */}
     </Layout>
   );
 }

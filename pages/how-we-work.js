@@ -11,6 +11,7 @@ export default function HowWeWork() {
         title="How We Work"
         subtitle="At MSQ IT, we collaborate closely with clients to deliver tailored, value-driven technology outcomes. Whether as an independent advisor or a seamless extension of your team, we bring clarity and structure to IT decision-making."
         accentText="Our Approach"
+        backgroundImage="/images/professionals/Studio-Project (1).png"
       />
       
       {/* Introduction */}

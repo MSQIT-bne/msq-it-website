@@ -12,7 +12,7 @@ export default function Home() {
         
         {/* Network Background Image */}
         <div className="absolute inset-0 opacity-20">
-          <img src="/network-4636686_1280.jpg" alt="Network Background" className="w-full h-full object-cover" />
+          <img src="/images/professionals/Studio-Project.png" alt="Network Background" className="w-full h-full object-cover" />
         </div>
         
         {/* Decorative Elements */}
@@ -46,30 +46,37 @@ export default function Home() {
                 At MSQ IT, we specialise in supporting small to medium-sized businesses across Brisbane, helping them simplify technology and remove the complexity from IT. Our mission is to make IT work as a true business enabler, not a barrier, by delivering customer-focused support, practical solutions, and proactive service. Backed by industry certifications, real-world experience, and good practice frameworks like PMI, ITIL, SMB1001 we bring clarity, consistency, and care to every client engagement. For us, great customer service isn't just a goal, it's the standard.
               </p>
               <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 hero-content-delay-3">
-                <Link href="/contact" className="inline-flex justify-center items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-primary bg-white hover:bg-gray-100 shadow-lg transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+                {/* <Link href="/contact" className="inline-flex justify-center items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-primary bg-white hover:bg-gray-100 shadow-lg transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
                   Get Started
-                </Link>
+                </Link> */}
                 <Link href="/services" className="inline-flex justify-center items-center px-6 py-3 border border-white text-base font-medium rounded-md text-white bg-white/10 backdrop-blur-sm hover:bg-white/20 transition-all duration-300 hover:-translate-y-1">
                   Our Services
                 </Link>
               </div>
             </div>
             <div className="hidden md:block">
-              {/* Modern 3D illustration */}
+              {/* IT Professional Image */}
               <div className="relative hero-content-delay-2">
                 <div className="absolute -inset-0.5 bg-gradient-to-r from-blue-400 to-indigo-500 rounded-lg blur opacity-30"></div>
-                <div className="relative bg-white/10 backdrop-blur-sm p-6 rounded-lg shadow-2xl border border-white/20 h-96 flex items-center justify-center overflow-hidden hero-card">
-                  <div className="absolute -right-10 -bottom-10 w-40 h-40 bg-blue-400 rounded-full opacity-20 blur-2xl hero-shape-1"></div>
-                  <div className="absolute -left-10 -top-10 w-40 h-40 bg-indigo-400 rounded-full opacity-20 blur-2xl hero-shape-2"></div>
-                  
-                  <div className="relative z-10 text-center">
-                    <div className="w-16 h-16 mx-auto mb-4 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-xl flex items-center justify-center shadow-lg transform transition-transform hover:scale-110 duration-300">
-                      <svg className="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 12h14M12 5l7 7-7 7" />
-                      </svg>
+                <div className="relative bg-white/10 backdrop-blur-sm p-1 rounded-lg shadow-2xl border border-white/20 overflow-hidden hero-card">
+                  {/* Professional IT image with overlay */}
+                  <div className="relative h-96 w-full overflow-hidden rounded-lg">
+                    {/* Placeholder for IT professional image - replace with actual image path when available */}
+                    <div className="absolute inset-0 bg-gradient-to-br from-blue-800/40 to-indigo-900/40 mix-blend-multiply z-10"></div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-primary-dark/80 via-transparent to-transparent z-10"></div>
+                    
+                    {/* Professional IT image */}
+                    <img 
+                      src="/images/professionals/cloud-computing.jpg" 
+                      alt="IT professional with digital interface" 
+                      className="h-full w-full object-cover"
+                    />
+                    
+                    {/* Caption overlay */}
+                    <div className="absolute bottom-0 left-0 right-0 p-6 z-20">
+                      <h3 className="text-white text-xl font-bold mb-2">IT Experts at Your Service</h3>
+                      <p className="text-blue-100 text-sm">Professional support for your business technology needs</p>
                     </div>
-                    <h3 className="text-white text-xl font-bold mb-2">IT Solutions for Growth</h3>
-                    <p className="text-blue-100 text-sm">Empowering your business with modern technology</p>
                   </div>
                 </div>
               </div>
@@ -78,15 +85,24 @@ export default function Home() {
             <div className="block md:hidden mt-8">
               <div className="relative hero-content-delay-2">
                 <div className="absolute -inset-0.5 bg-gradient-to-r from-blue-400 to-indigo-500 rounded-lg blur opacity-30"></div>
-                <div className="relative bg-white/10 backdrop-blur-sm p-6 rounded-lg shadow-2xl border border-white/20 flex items-center justify-center overflow-hidden hero-card">
-                  <div className="relative z-10 text-center py-6">
-                    <div className="w-14 h-14 mx-auto mb-4 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-xl flex items-center justify-center shadow-lg">
-                      <svg className="h-7 w-7 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 12h14M12 5l7 7-7 7" />
-                      </svg>
+                <div className="relative bg-white/10 backdrop-blur-sm p-1 rounded-lg shadow-2xl border border-white/20 overflow-hidden hero-card">
+                  {/* Mobile IT Professional image placeholder */}
+                  <div className="relative h-48 w-full overflow-hidden rounded-lg">
+                    <div className="absolute inset-0 bg-gradient-to-br from-blue-800/40 to-indigo-900/40 mix-blend-multiply z-10"></div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-primary-dark/80 via-transparent to-transparent z-10"></div>
+                    
+                    {/* Professional IT image - mobile version */}
+                    <img 
+                      src="/images/professionals/Studio-Project (1).png" 
+                      alt="IT professional with digital interface - mobile" 
+                      className="h-full w-full object-cover"
+                    />
+                    
+                    {/* Caption overlay */}
+                    <div className="absolute bottom-0 left-0 right-0 p-4 z-20">
+                      <h3 className="text-white text-lg font-bold mb-1">IT Experts at Your Service</h3>
+                      <p className="text-blue-100 text-xs">Professional support for your business</p>
                     </div>
-                    <h3 className="text-white text-lg font-bold mb-2">IT Solutions for Growth</h3>
-                    <p className="text-blue-100 text-xs">Empowering your business with modern technology</p>
                   </div>
                 </div>
               </div>
@@ -129,7 +145,16 @@ export default function Home() {
             {/* Secure Card */}
             <div className="group relative">
               <div className="absolute -inset-0.5 bg-gradient-to-r from-primary to-blue-600 rounded-xl blur opacity-30 group-hover:opacity-70 transition duration-500"></div>
-              <div className="relative bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 hero-card">
+              <div className="relative bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 hero-card overflow-hidden">
+                {/* Background image */}
+                {/* <div className="absolute inset-0 z-0 opacity-20">
+                  <img 
+                    src="/images/professionals/Studio-Project (1).png" 
+                    alt="IT Security Background" 
+                    className="w-full h-full object-cover"
+                  />
+                </div> */}
+                <div className="relative z-10">
                 <div className="w-14 h-14 bg-gradient-to-br from-primary to-blue-600 rounded-xl flex items-center justify-center mb-6 shadow-md group-hover:shadow-lg transition-all duration-300">
                   <svg className="h-7 w-7 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
@@ -139,13 +164,23 @@ export default function Home() {
                 <p className="text-gray-600">
                   Enterprise-grade security solutions designed specifically for small to medium businesses, protecting your data and systems.
                 </p>
+                </div>
               </div>
             </div>
             
             {/* Scalable Card */}
             <div className="group relative">
               <div className="absolute -inset-0.5 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-xl blur opacity-30 group-hover:opacity-70 transition duration-500"></div>
-              <div className="relative bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 hero-card">
+              <div className="relative bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 hero-card overflow-hidden">
+                {/* Background image */}
+                {/* <div className="absolute inset-0 z-0 opacity-20">
+                  <img 
+                    src="/images/professionals/Studio-Project (2).png" 
+                    alt="IT Scalability Background" 
+                    className="w-full h-full object-cover"
+                  />
+                </div> */}      
+                <div className="relative z-10">
                 <div className="w-14 h-14 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-xl flex items-center justify-center mb-6 shadow-md group-hover:shadow-lg transition-all duration-300">
                   <svg className="h-7 w-7 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
@@ -155,13 +190,23 @@ export default function Home() {
                 <p className="text-gray-600">
                   Modern workplace enablement that grows with your business needs, ensuring you're always ready for the next step.
                 </p>
+                </div>
               </div>
             </div>
             
             {/* Tailored Card */}
             <div className="group relative">
               <div className="absolute -inset-0.5 bg-gradient-to-r from-indigo-500 to-purple-600 rounded-xl blur opacity-30 group-hover:opacity-70 transition duration-500"></div>
-              <div className="relative bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 hero-card">
+              <div className="relative bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 hero-card overflow-hidden">
+                {/* Background image */}
+                {/* <div className="absolute inset-0 z-0 opacity-10">
+                  <img 
+                    src="/images/professionals/saas-concept-collage.jpg" 
+                    alt="IT Tailored Solutions Background" 
+                    className="w-full h-full object-cover"
+                  />
+                </div> */}
+                <div className="relative z-10">
                 <div className="w-14 h-14 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-xl flex items-center justify-center mb-6 shadow-md group-hover:shadow-lg transition-all duration-300">
                   <svg className="h-7 w-7 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
@@ -171,6 +216,7 @@ export default function Home() {
                 <p className="text-gray-600">
                   No one-size-fits-all templates. Solutions designed for your specific business requirements and unique challenges.
                 </p>
+                </div>
               </div>
             </div>
           </div>
@@ -276,6 +322,7 @@ export default function Home() {
       </section>
 
       {/* AI Chatbot Section - Temporarily commented out as requested */}
+
 
       {/* Call to Action */}
       <section className="py-16">

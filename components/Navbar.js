@@ -47,9 +47,9 @@ export default function Navbar() {
                 </Link>
               ))}
             </div>
-            <Link href="/contact" className="inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-primary hover:bg-primary-dark">
+            {/* <Link href="/contact" className="inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-primary hover:bg-primary-dark">
               Get Started
-            </Link>
+            </Link> */}
           </div>
           
           {/* Mobile menu button */}

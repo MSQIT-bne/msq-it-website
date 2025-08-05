@@ -1,14 +1,18 @@
 import React from 'react';
 
-export default function PageHeader({ title, subtitle, accentText }) {
+export default function PageHeader({ title, subtitle, accentText, backgroundImage }) {
   return (
     <section className="relative py-20 overflow-hidden">
       {/* Background Elements */}
       <div className="absolute inset-0 bg-gradient-to-br from-primary-light via-primary to-primary-dark opacity-90"></div>
       
-      {/* Network Background Image */}
+      {/* Background Image */}
       <div className="absolute inset-0 opacity-20">
-        <img src="/network-4636686_1280.jpg" alt="Network Background" className="w-full h-full object-cover" />
+        <img 
+          src={backgroundImage || "/network-4636686_1280.jpg"} 
+          alt="Background Image" 
+          className="w-full h-full object-cover" 
+        />
       </div>
       
       {/* Decorative Elements */}

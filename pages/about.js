@@ -11,6 +11,7 @@ export default function About() {
         title="About Us" 
         subtitle="MSQ IT is a Brisbane-based IT consulting and managed services firm with strong expertise in Microsoft technologies and cybersecurity."
         accentText="Our Story"
+        backgroundImage="/images/professionals/data-center-worker-typing-keyboard-using-programming-languages-close-up.jpg"
       />
 
       {/* About Us Content */}
