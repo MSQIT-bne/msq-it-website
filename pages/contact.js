@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
+import emailjs from '@emailjs/browser';
 import Layout from '../components/Layout';
 import PageHeader from '../components/PageHeader';
 import ContentSection from '../components/ContentSection';
@@ -20,11 +21,16 @@ export default function Contact() {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
+    // Map EmailJS field names to state field names
+    const stateField = name.replace('user_', '');
+    
     setFormData({
       ...formData,
-      [name]: value,
+      [stateField]: value,
     });
   };
+
+  const form = useRef();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -37,36 +43,33 @@ export default function Contact() {
     });
     
     try {
-      // Send form data to our API endpoint
-      const response = await fetch('/api/contact', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
+      // Initialize EmailJS with your public key
+      // IMPORTANT: Replace 'YOUR_PUBLIC_KEY' with your actual EmailJS public key from your EmailJS dashboard
+      emailjs.init('6Z6SfrZqO_K36d858');
+      
+      // Send the email using EmailJS
+      // IMPORTANT: Replace the following with your actual EmailJS service ID and template ID
+      const result = await emailjs.sendForm(
+        'service_ph8nuvr', // Replace with your EmailJS service ID (e.g., 'gmail')
+        'template_479ql3w', // Replace with your EmailJS template ID (e.g., 'template_abc123')
+        form.current
+      );
+      
+      // Success
+      setFormStatus({
+        submitted: true,
+        error: false,
+        message: 'Thank you for your message! We will get back to you soon.',
       });
       
-      const data = await response.json();
-      
-      if (response.ok) {
-        // Success
-        setFormStatus({
-          submitted: true,
-          error: false,
-          message: 'Thank you for your message! We will get back to you soon.',
-        });
-        // Reset form data
-        setFormData({
-          name: '',
-          email: '',
-          phone: '',
-          company: '',
-          message: '',
-        });
-      } else {
-        // API returned an error
-        throw new Error(data.message || 'Something went wrong');
-      }
+      // Reset form data
+      setFormData({
+        name: '',
+        email: '',
+        phone: '',
+        company: '',
+        message: '',
+      });
     } catch (error) {
       console.error('Error submitting form:', error);
       setFormStatus({
@@ -198,75 +201,73 @@ export default function Contact() {
                   </div>
                 </div>
               ) : (
-                <form onSubmit={handleSubmit} className="space-y-5">
+                <form ref={form} onSubmit={handleSubmit} className="space-y-6">
                   <div>
-                    <label htmlFor="name" className="block text-sm font-medium text-gray-700">
-                      Name
-                    </label>
+                    <label htmlFor="name" className="block text-sm font-medium text-gray-700">Name *</label>
                     <input
                       type="text"
-                      name="name"
                       id="name"
+                      name="user_name" 
                       value={formData.name}
                       onChange={handleChange}
                       required
-                      className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-primary focus:border-primary focus:ring-opacity-50 transition duration-200"
+                      className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
                     />
                   </div>
+                  
                   <div>
-                    <label htmlFor="email" className="block text-sm font-medium text-gray-700">
-                      Email
-                    </label>
+                    <label htmlFor="email" className="block text-sm font-medium text-gray-700">Email *</label>
                     <input
                       type="email"
-                      name="email"
                       id="email"
+                      name="user_email" 
                       value={formData.email}
                       onChange={handleChange}
                       required
-                      className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-primary focus:border-primary focus:ring-opacity-50 transition duration-200"
+                      className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
                     />
                   </div>
+                  
                   <div>
-                    <label htmlFor="phone" className="block text-sm font-medium text-gray-700">
-                      Phone
-                    </label>
+                    <label htmlFor="phone" className="block text-sm font-medium text-gray-700">Phone</label>
                     <input
                       type="tel"
-                      name="phone"
                       id="phone"
+                      name="user_phone" 
                       value={formData.phone}
                       onChange={handleChange}
-                      className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-primary focus:border-primary focus:ring-opacity-50 transition duration-200"
+                      className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
                     />
                   </div>
+                  
                   <div>
-                    <label htmlFor="company" className="block text-sm font-medium text-gray-700">
-                      Company
-                    </label>
+                    <label htmlFor="company" className="block text-sm font-medium text-gray-700">Company</label>
                     <input
                       type="text"
-                      name="company"
                       id="company"
+                      name="user_company" 
                       value={formData.company}
                       onChange={handleChange}
-                      className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-primary focus:border-primary focus:ring-opacity-50 transition duration-200"
+                      className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
                     />
                   </div>
+                  
                   <div>
-                    <label htmlFor="message" className="block text-sm font-medium text-gray-700">
-                      Message
-                    </label>
+                    <label htmlFor="message" className="block text-sm font-medium text-gray-700">Message *</label>
                     <textarea
-                      name="message"
                       id="message"
-                      rows="4"
+                      name="message" 
+                      rows={4}
                       value={formData.message}
                       onChange={handleChange}
                       required
-                      className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-primary focus:border-primary focus:ring-opacity-50 transition duration-200"
+                      className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
                     ></textarea>
                   </div>
+                  
+                  {/* Hidden field for recipient email */}
+                  <input type="hidden" name="to_email" value="ahchew@msqit.com.au" />
+                  
                   <div>
                     <button
                       type="submit"
