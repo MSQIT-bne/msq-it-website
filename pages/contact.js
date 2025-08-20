@@ -108,12 +108,12 @@ export default function Contact() {
                     content: "info@msqit.com.au",
                     gradient: "from-blue-500 to-indigo-500"
                   },
-                  {
+                 /* {
                     icon: "phone",
                     title: "Mobile",
                     content: "+61450 013 064",
                     gradient: "from-indigo-500 to-purple-500"
-                  },
+                  },*/
                   {
                     icon: "phone",
                     title: "Phone",
