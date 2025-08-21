@@ -80,7 +80,7 @@ export default function Services() {
         accentText="Business Operations"
         bgClass="bg-gradient-to-br from-blue-50 to-indigo-50"
       >
-        <div className="max-w-3xl mb-10">
+        <div className="max-w-3xl mx-auto text-center mb-10">
           <p className="text-lg mb-6 text-gray-700">
             At MSQ IT, we help small to medium-sized businesses streamline operations through tailored ERP solutions, with a focus on Microsoft Dynamics 365 Business Central and Wiise.
           </p>
@@ -170,7 +170,7 @@ export default function Services() {
         accentText="Proactive Support"
         bgClass="bg-gradient-to-br from-indigo-50 to-purple-50"
       >
-        <div className="max-w-3xl mb-10">
+        <div className="max-w-3xl mx-auto text-center mb-10">
           <p className="text-lg mb-6 text-gray-700">
             At MSQ IT, we deliver trusted, secure, and customer-focused managed IT services with a strong emphasis on Microsoft technologies and cybersecurity. Our services are underpinned by ITIL good practice standards, ensuring reliable, consistent, and high-quality outcomes across every engagement.
           </p>
