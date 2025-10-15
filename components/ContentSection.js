@@ -1,6 +1,7 @@
 import React from 'react';
 
 export default function ContentSection({ 
+  id,
   title, 
   subtitle, 
   accentText, 
@@ -9,7 +10,7 @@ export default function ContentSection({
   titleGradient = false 
 }) {
   return (
-    <section className={`py-24 relative overflow-hidden ${bgClass}`}>
+    <section id={id} className={`py-24 relative overflow-hidden ${bgClass}`}>
       {/* Decorative Elements */}
       <div className="absolute -bottom-24 -left-24 w-96 h-96 bg-primary-light opacity-10 rounded-full blur-3xl"></div>
       <div className="absolute -top-24 -right-24 w-96 h-96 bg-primary opacity-10 rounded-full blur-3xl"></div>
