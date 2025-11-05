@@ -1,84 +1,8 @@
-import { useState, useRef } from 'react';
-import emailjs from '@emailjs/browser';
 import Layout from '../components/Layout';
 import PageHeader from '../components/PageHeader';
 import ContentSection from '../components/ContentSection';
 
 export default function Contact() {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    company: '',
-    message: '',
-  });
-
-  const [formStatus, setFormStatus] = useState({
-    submitted: false,
-    error: false,
-    message: '',
-  });
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    // Map EmailJS field names to state field names
-    const stateField = name.replace('user_', '');
-    
-    setFormData({
-      ...formData,
-      [stateField]: value,
-    });
-  };
-
-  const form = useRef();
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    
-    // Set loading state
-    setFormStatus({
-      submitted: false,
-      error: false,
-      message: 'Sending your message...',
-    });
-    
-    try {
-      // Initialize EmailJS with your public key
-      // IMPORTANT: Replace 'YOUR_PUBLIC_KEY' with your actual EmailJS public key from your EmailJS dashboard
-      emailjs.init('6Z6SfrZqO_K36d858');
-      
-      // Send the email using EmailJS
-      // IMPORTANT: Replace the following with your actual EmailJS service ID and template ID
-      const result = await emailjs.sendForm(
-        'service_ph8nuvr', // Replace with your EmailJS service ID (e.g., 'gmail')
-        'template_479ql3w', // Replace with your EmailJS template ID (e.g., 'template_abc123')
-        form.current
-      );
-      
-      // Success
-      setFormStatus({
-        submitted: true,
-        error: false,
-        message: 'Thank you for your message! We will get back to you soon.',
-      });
-      
-      // Reset form data
-      setFormData({
-        name: '',
-        email: '',
-        phone: '',
-        company: '',
-        message: '',
-      });
-    } catch (error) {
-      console.error('Error submitting form:', error);
-      setFormStatus({
-        submitted: false,
-        error: true,
-        message: error.message || 'Failed to send message. Please try again later.',
-      });
-    }
-  };
 
   return (
     <Layout title="Contact Us - MSQ IT">
@@ -172,124 +96,13 @@ export default function Contact() {
             <div className="absolute -inset-1 bg-gradient-to-r from-indigo-400 to-blue-500 rounded-xl blur opacity-20"></div>
             <div className="relative bg-white p-8 rounded-xl border border-gray-200/50 shadow-lg backdrop-blur-sm">
               <h2 className="text-2xl font-bold mb-6 bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">Send Us a Message</h2>
-              {formStatus.submitted ? (
-                <div className="bg-green-50 border border-green-200 rounded-md p-6">
-                  <div className="flex">
-                    <div className="flex-shrink-0">
-                      <svg className="h-5 w-5 text-green-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                        <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                      </svg>
-                    </div>
-                    <div className="ml-3">
-                      <h3 className="text-lg font-medium text-green-800">Message Sent!</h3>
-                      <p className="mt-2 text-sm text-green-700">{formStatus.message}</p>
-                    </div>
-                  </div>
-                </div>
-              ) : formStatus.error ? (
-                <div className="bg-red-50 border border-red-200 rounded-md p-6 mb-6">
-                  <div className="flex">
-                    <div className="flex-shrink-0">
-                      <svg className="h-5 w-5 text-red-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                        <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clipRule="evenodd" />
-                      </svg>
-                    </div>
-                    <div className="ml-3">
-                      <h3 className="text-lg font-medium text-red-800">Error</h3>
-                      <p className="mt-2 text-sm text-red-700">{formStatus.message}</p>
-                    </div>
-                  </div>
-                </div>
-              ) : (
-                <form ref={form} onSubmit={handleSubmit} className="space-y-6">
-                  <div>
-                    <label htmlFor="name" className="block text-sm font-medium text-gray-700">Name *</label>
-                    <input
-                      type="text"
-                      id="name"
-                      name="user_name" 
-                      value={formData.name}
-                      onChange={handleChange}
-                      required
-                      className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                    />
-                  </div>
-                  
-                  <div>
-                    <label htmlFor="email" className="block text-sm font-medium text-gray-700">Email *</label>
-                    <input
-                      type="email"
-                      id="email"
-                      name="user_email" 
-                      value={formData.email}
-                      onChange={handleChange}
-                      required
-                      className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                    />
-                  </div>
-                  
-                  <div>
-                    <label htmlFor="phone" className="block text-sm font-medium text-gray-700">Phone</label>
-                    <input
-                      type="tel"
-                      id="phone"
-                      name="user_phone" 
-                      value={formData.phone}
-                      onChange={handleChange}
-                      className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                    />
-                  </div>
-                  
-                  <div>
-                    <label htmlFor="company" className="block text-sm font-medium text-gray-700">Company</label>
-                    <input
-                      type="text"
-                      id="company"
-                      name="user_company" 
-                      value={formData.company}
-                      onChange={handleChange}
-                      className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                    />
-                  </div>
-                  
-                  <div>
-                    <label htmlFor="message" className="block text-sm font-medium text-gray-700">Message *</label>
-                    <textarea
-                      id="message"
-                      name="message" 
-                      rows={4}
-                      value={formData.message}
-                      onChange={handleChange}
-                      required
-                      className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                    ></textarea>
-                  </div>
-                  
-                  {/* Hidden field for recipient email */}
-                  <input type="hidden" name="to_email" value="ahchew@msqit.com.au" />
-                  
-                  <div>
-                    <button
-                      type="submit"
-                      className="relative w-full inline-flex group"
-                      disabled={formStatus.message === 'Sending your message...'}
-                    >
-                      <div className="absolute -inset-0.5 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-md blur opacity-70 group-hover:opacity-100 transition duration-500"></div>
-                      <span className="relative w-full flex justify-center py-3 px-4 rounded-md text-sm font-medium text-white bg-primary hover:bg-primary-dark focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary">
-                        {formStatus.message === 'Sending your message...' ? (
-                          <>
-                            <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                              <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                              <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                            </svg>
-                            Sending...
-                          </>
-                        ) : 'Send Message'}
-                      </span>
-                    </button>
-                  </div>
-                </form>
-              )}
+              <div className="flex justify-center">
+                <iframe 
+                  src="https://msqit.desk365.io/wf/createTicket" 
+                  title="Desk365 Web Form" 
+                  style={{width: '350px', height: '550px', borderRadius: '4px', border: '1px solid #3F51B5'}}
+                ></iframe>
+              </div>
             </div>
           </div>
         </div>
